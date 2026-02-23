@@ -1,0 +1,17 @@
+# Numerical software
+
+```{python}
+import lucifex
+import crocodil
+print('hello world')
+```
+
+```{python}
+from lucifex.fdm import FiniteDifference
+
+print(FiniteDifference)
+```
+
+```{python}
+print(FiniteDifference)
+```

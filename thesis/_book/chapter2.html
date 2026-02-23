@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; Governing equations for the dissolution of capillary-trapped CO_2 – Modelling of Advective-Diffusive-Reactive Flows in Geological Carbon Sequestration</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chapter3.html" rel="next">
+<link href="./chapter1.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-27c261d06b905028a18691de25d09dde.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
+  MathJax = {
+    tex: {
+      tags: 'ams'
+    }
+  };
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter2.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Governing equations for the dissolution of capillary-trapped CO<span class="math inline">\(_2\)</span></span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Modelling of Advective-Diffusive-Reactive Flows in Geological Carbon Sequestration</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Declaration</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./asbtract.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Abstract</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./acknowledgements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acknowledgements</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./toc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">toc.html</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Governing equations for the dissolution of capillary-trapped CO<span class="math inline">\(_2\)</span></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Numerical software</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#porosity-saturation" id="toc-porosity-saturation" class="nav-link active" data-scroll-target="#porosity-saturation"><span class="header-section-number">2.1</span> Porosity &amp; saturation</a></li>
+  <li><a href="#governing-equations" id="toc-governing-equations" class="nav-link" data-scroll-target="#governing-equations"><span class="header-section-number">2.2</span> Governing equations</a>
+  <ul class="collapse">
+  <li><a href="#boussinesq-approximation" id="toc-boussinesq-approximation" class="nav-link" data-scroll-target="#boussinesq-approximation"><span class="header-section-number">2.2.1</span> Boussinesq approximation</a></li>
+  <li><a href="#streamfunction-formulation" id="toc-streamfunction-formulation" class="nav-link" data-scroll-target="#streamfunction-formulation"><span class="header-section-number">2.2.2</span> Streamfunction formulation</a></li>
+  <li><a href="#pressure-formulation" id="toc-pressure-formulation" class="nav-link" data-scroll-target="#pressure-formulation"><span class="header-section-number">2.2.3</span> Pressure formulation</a></li>
+  <li><a href="#sec-non_dimensionalisation" id="toc-sec-non_dimensionalisation" class="nav-link" data-scroll-target="#sec-non_dimensionalisation"><span class="header-section-number">2.2.4</span> Non-dimensionalisation &amp; further approximation</a></li>
+  </ul></li>
+  <li><a href="#diagnostic-equations" id="toc-diagnostic-equations" class="nav-link" data-scroll-target="#diagnostic-equations"><span class="header-section-number">2.3</span> Diagnostic equations</a>
+  <ul class="collapse">
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview"><span class="header-section-number">2.3.1</span> Overview</a></li>
+  <li><a href="#global-minima-maxima" id="toc-global-minima-maxima" class="nav-link" data-scroll-target="#global-minima-maxima"><span class="header-section-number">2.3.2</span> Global minima &amp; maxima</a></li>
+  <li><a href="#spatial-averages" id="toc-spatial-averages" class="nav-link" data-scroll-target="#spatial-averages"><span class="header-section-number">2.3.3</span> Spatial averages</a></li>
+  <li><a href="#co_2-mass" id="toc-co_2-mass" class="nav-link" data-scroll-target="#co_2-mass"><span class="header-section-number">2.3.4</span> CO<span class="math inline">\(_2\)</span> mass</a></li>
+  <li><a href="#flux" id="toc-flux" class="nav-link" data-scroll-target="#flux"><span class="header-section-number">2.3.5</span> Flux</a></li>
+  <li><a href="#events" id="toc-events" class="nav-link" data-scroll-target="#events"><span class="header-section-number">2.3.6</span> Events</a></li>
+  <li><a href="#plume-statistics" id="toc-plume-statistics" class="nav-link" data-scroll-target="#plume-statistics"><span class="header-section-number">2.3.7</span> Plume statistics</a></li>
+  <li><a href="#reaction-front" id="toc-reaction-front" class="nav-link" data-scroll-target="#reaction-front"><span class="header-section-number">2.3.8</span> Reaction front</a></li>
+  <li><a href="#fluid-front" id="toc-fluid-front" class="nav-link" data-scroll-target="#fluid-front"><span class="header-section-number">2.3.9</span> Fluid front</a></li>
+  </ul></li>
+  <li><a href="#numerical-methods" id="toc-numerical-methods" class="nav-link" data-scroll-target="#numerical-methods"><span class="header-section-number">2.4</span> Numerical methods</a>
+  <ul class="collapse">
+  <li><a href="#discretization-in-time" id="toc-discretization-in-time" class="nav-link" data-scroll-target="#discretization-in-time"><span class="header-section-number">2.4.1</span> Discretization in time</a></li>
+  <li><a href="#discretization-in-space" id="toc-discretization-in-space" class="nav-link" data-scroll-target="#discretization-in-space"><span class="header-section-number">2.4.2</span> Discretization in space</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Governing equations for the dissolution of capillary-trapped CO<span class="math inline">\(_2\)</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="porosity-saturation" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="porosity-saturation"><span class="header-section-number">2.1</span> Porosity &amp; saturation</h2>
+<div id="fig-pore_scale" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pore_scale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./figures/pore_scale.png" id="fig-pore_scale" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pore_scale-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: Pore-scale schematic illustrating the partition of space into brine fluid, capillary-trapped CO<span class="math inline">\(_2\)</span> and rock. ‘Bubbles’ or ganglia of CO<span class="math inline">\(_2\)</span> are held in place by surface tension forces, but dissolve into the surrounding brine. The rock is assumed inert, reacting with neither CO<span class="math inline">\(_2\)</span> nor brine.
+</figcaption>
+</figure>
+</div>
+<p>We consider a porous medium consisting of rock, brine fluid and capillary-trapped CO<span class="math inline">\(_2\)</span> as illustrated in <a href="#fig-pore_scale" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> , such that the partition of space can be expressed as</p>
+<p><span class="math display">\[\begin{align}
+\label{PorosityPartition}
+\phi + \phi_{\text{CO}_2} + \phi_{\text{rock}} = 1
+\end{align}\]</span></p>
+<p>where the porosity <span class="math inline">\(\phi\)</span> is the volume fraction of brine fluid and the remaining volume fractions <span class="math inline">\(\phi_{\text{CO}_2}\)</span> and <span class="math inline">\(\phi_{\text{rock}}\)</span> are contributed by the capillary-trapped CO<span class="math inline">\(_2\)</span> and rock, respectively. As modelling assumptions we assume that the rock is inert and the `bubbles’ of capillary-trapped CO<span class="math inline">\(_2\)</span> held in place by surface tension forces are immobile, so that only the brine fluid is mobile. However the amount capillary-trapped CO<span class="math inline">\(_2\)</span> is able to gradually diminish over time by dissolution into the neighbouring brine. In general, brine and single-phase CO<span class="math inline">\(_2\)</span> are a pair of immiscible liquids that can be modelled as a multiphase flow, but in this thesis we only investigate the considerably simpler problem of the single-phase flow of brine fluid containing dissolved CO<span class="math inline">\(_2\)</span>. Given that we are primarily interested in the spatial extent and temporal evolution of the capillary-trapped CO<span class="math inline">\(_2\)</span>, we can write the effective porosity</p>
+<p><span class="math display">\[\begin{align}
+\label{EffectivePorosity}
+\phi(\textbf{x},t)=\varphi(\textbf{x})(1-s(\textbf{x},t))    
+\end{align}\]</span></p>
+<p>in terms of the saturation <span class="math inline">\(s(\textbf{x},t)\)</span> of capillary-trapped CO<span class="math inline">\(_2\)</span> and the porosity distribution <span class="math inline">\(\varphi(\textbf{x})\)</span> of the inert rock formation, which is in general heterogeneous. Since the rock is by assumption inert, <span class="math inline">\(\frac{\partial\varphi}{\partial t}=0\)</span> and any evolution in the effective porosity is solely due to evolution in the saturation. <span class="math inline">\(s=0\Leftrightarrow\phi=\varphi\)</span> corresponds to the pore space containing only brine fluid CO<span class="math inline">\(_2\)</span>, whereas at the other extreme <span class="math inline">\(s=1\Leftrightarrow\phi=0\)</span> corresponds to pore space containing only capillary-trapped CO<span class="math inline">\(_2\)</span>. In term of <span class="math inline">\(s\)</span> and <span class="math inline">\(\varphi\)</span>, the the other volume fractions are <span class="math inline">\(\phi_{\text{CO}_2}(\textbf{x},t)=\varphi(\textbf{x})s(\textbf{x},t)\)</span> and <span class="math inline">\(\phi_{\text{rock}}(\textbf{x})=1-\varphi(\textbf{x})\)</span>.</p>
+</section>
+<section id="governing-equations" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="governing-equations"><span class="header-section-number">2.2</span> Governing equations</h2>
+<p>In a porous medium filling a domain <span class="math inline">\(\Omega\)</span> with boundary <span class="math inline">\(\partial\Omega\)</span>, flow coupled to thermosolutal transport is modelled by the general governing equations for <span class="math inline">\((\textbf{x}, t)\in\Omega\times[0,\infty)\)</span></p>
+<p><span class="math display">\[\begin{align}
+\label{eq:DimensionalHeatTransport}
+\phi\frac{\partial\theta}{\partial t}+\nabla\cdot(\theta\textbf{u}-\mathsf{G}\cdot\nabla c)&amp;=0\\
+\label{eq:DimensionalSoluteTransport}
+\frac{\partial(\phi c)}{\partial t}+\nabla\cdot(c\textbf{u}-\mathsf{D}\cdot\nabla c)&amp;=R\\
+\label{eq:DimensionalContinuity}
+\frac{\partial(\phi \rho)}{\partial t}+\nabla\cdot(\rho\textbf{u})&amp;=R\\
+\label{eq:DimensionalDarcy}
+\textbf{u}&amp;=-\frac{\mathsf{K}}{\mu}\cdot(\nabla p-\rho\textbf{g}) \\
+\label{eq:DimensionalEvolution}
+\varrho\frac{\partial \phi}{\partial t}&amp;=R
+\end{align}\]</span></p>
+<p>where the transport equation <span class="math inline">\(\eqref{eq:DimensionalHeatTransport}\)</span> for the fluid temperature <span class="math inline">\(\theta\)</span> with a thermal dispersion <span class="math inline">\(\mathsf{G}\)</span> is derived from the conservation of energy (assuming no heat transfer between the solid and liquid phases in the porous medium and no heat sources or sinks); <span class="math inline">\(\eqref{eq:DimensionalSoluteTransport}\)</span> describes the transport of solute dissolved at concentration <span class="math inline">\(c\)</span> (solute mass per unit fluid volume) in fluid flowing through a porous medium of porosity <span class="math inline">\(\phi\)</span>, incorporating advective transport due to the Darcy velocity <span class="math inline">\(\textbf{u}\)</span>, dispersion with coefficient <span class="math inline">\(\mathsf{D}\)</span> and rate of addition or removal <span class="math inline">\(R\)</span> due to chemical reactions; <span class="math inline">\(\eqref{eq:DimensionalContinuity}\)</span> expresses mass conservation in the fluid of density <span class="math inline">\(\rho\)</span>; <span class="math inline">\(\eqref{eq:DimensionalDarcy}\)</span> is Darcy’s law expressing the Darcy velocity <span class="math inline">\(\textbf{u}\)</span> in terms of the permeability <span class="math inline">\(\mathsf{K}\)</span>, fluid viscosity <span class="math inline">\(\mu\)</span>, pressure gradient <span class="math inline">\(\nabla p\)</span> and buoyancy force <span class="math inline">\(\rho\textbf{g}\)</span>; <span class="math inline">\(\eqref{eq:DimensionalEvolution}\)</span> also expresses mass conservation and models the evolution of porosity <span class="math inline">\(\phi\)</span> due to the addition or removal of solute mass from an immobile phase of density <span class="math inline">\(\varrho\)</span>. Note that the Darcy velocity differs from the interstitial fluid velocity <span class="math inline">\(\phi\textbf{u}\)</span> by a factor of porosity. This system of equations is closed by a set empirical relations for the concentration-dependent fluid density <span class="math inline">\(\rho=\rho(c)\)</span> and viscosity <span class="math inline">\(\mu=\mu(c)\)</span> (i.e.&nbsp;equations of state), porosity-dependent permeability <span class="math inline">\(\mathsf{K}=\mathsf{K}(\phi)\)</span>, dispersions <span class="math inline">\(\mathsf{G}=\mathsf{G}(\phi, \textbf{u})\)</span> and <span class="math inline">\(\mathsf{D}=\mathsf{D}(\phi, \textbf{u})\)</span> dependent on both porosity and Darcy velocity, and a reaction rate <span class="math inline">\(R=R(\phi, c, \theta)\)</span> dependent on porosity, concentration and temperature. <span class="math inline">\(\mathsf{G}\)</span>, <span class="math inline">\(\mathsf{D}\)</span> and <span class="math inline">\(\mathsf{K}\)</span> are in general tensor-valued to account for anisotropy in the porous medium. The gravity vector expressed in terms of its unit vector is <span class="math inline">\(\textbf{g}=g\textbf{e}_g\)</span>.</p>
+<p>The governing equations <span class="math inline">\(\eqref{eq:DimensionalHeatTransport}\)</span>-<span class="math inline">\(\eqref{eq:DimensionalEvolution}\)</span> are supplemented by a set of boundary conditions on <span class="math inline">\(\theta\)</span>, <span class="math inline">\(c\)</span>, and (<span class="math inline">\(\textbf{u}\)</span>, <span class="math inline">\(p\)</span>) and initial conditions on <span class="math inline">\(\theta\)</span>, <span class="math inline">\(c\)</span> and <span class="math inline">\(s\)</span>. In general the boundary conditions on the transport equations <span class="math inline">\(\eqref{eq:DimensionalHeatTransport}\)</span> and <span class="math inline">\(\eqref{eq:DimensionalSoluteTransport}\)</span> may be a combination of Dirichlet (D) and Neumann (N) boundary conditions prescribing a known value or flux respectively</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:ThermalDirichlet}
+\theta &amp;= \theta_{\text{D}}\quad\text{for~}\textbf{x}\in\partial\Omega_{\text{D},\theta} \\
+\label{eq:ThermalNeumann}
+\textbf{n}\cdot(\mathsf{G}\cdot\nabla\theta) &amp;= \theta_{\text{N}}\quad\text{for~}\textbf{x}\in\partial\Omega_{\text{N},\theta}=\partial\Omega/\partial\Omega_{\text{D},\theta} \\
+\label{eq:SolutalDirichlet}
+c &amp;= c_{\text{D}}\quad\text{for~}\textbf{x}\in\partial\Omega_{\text{D},c}\\
+\label{eq:SolutalNeumann}
+\textbf{n}\cdot(\mathsf{D}\cdot\nabla c) &amp;= c_{\text{N}}\quad\text{for~}\textbf{x}\in\partial\Omega_{\text{N},c}=\partial\Omega/\partial\Omega_{\text{D},c}
+\end{align}\]</span></p>
+<p>where <span class="math inline">\(\textbf{n}\)</span> is the outward unit normal to the boundary. The boundary conditions on the fluid flow governed by the Darcy system <span class="math inline">\(\eqref{eq:DimensionalContinuity}\)</span> and <span class="math inline">\(\eqref{eq:DimensionalDarcy}\)</span> may be either a prescribed pressure, or a prescribed normal velocity. For reasons that will become evident later in our discussion of the finite element method, we shall refer to these as essential (E) and natural (N) boundary conditions respectively.</p>
+<p><span class="math display">\[\begin{align}
+\textbf{n}\cdot\textbf{u} &amp;= u_{\text{E}}\quad\text{for~}\textbf{x}\in\partial\Omega_{\text{E}} \\
+p &amp;= p_{\text{N}}\quad\text{for~}\textbf{x}\in\partial\Omega_{\text{N}}=\partial\Omega/\partial\Omega_{\text{E}}
+\end{align}\]</span></p>
+<p>In the case <span class="math inline">\(\partial\Omega_{\text{N}}=\varnothing\)</span>, the velocity boundary condition must also obey the constraint <span class="math inline">\(\int_{\partial\Omega_{\text{E}}}u_{\text{E}}~\text{d}\Gamma=0\)</span> due to incompressibility. Since the governing equations do not contain any time-derivatives of the velocity or presure, initial conditions on <span class="math inline">\(\textbf{u}\)</span> and <span class="math inline">\(p\)</span> need not be provided. We denote the initial temperature, concentration an saturation by</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:InitialTemperature}
+\theta(\textbf{x}, t=0) &amp;= \theta_0(\textbf{x}) \\
+\label{eq:InitialConcentration}
+c(\textbf{x}, t=0) &amp;= c_0(\textbf{x}) \\
+\label{eq:InitialSaturation}
+s(\textbf{x}, t=0) &amp;= s_0(\textbf{x})
+\end{align}\]</span></p>
+<p>In our model of the dissolution of capillary-trapped CO<span class="math inline">\(_2\)</span> and its subsequent transport via advection and diffusion in the brine fluid, <span class="math inline">\(c\)</span> is the concentration of CO<span class="math inline">\(_2\)</span> dissolved in brine, <span class="math inline">\(R\)</span> is the rate of addition into the brine due to the dissolution of capillary-trapped CO<span class="math inline">\(_2\)</span> and <span class="math inline">\(\varrho\)</span> is the density of the single-phase CO<span class="math inline">\(_2\)</span>. We set <span class="math inline">\(\phi=\varphi(1-s)\)</span> to instead work with the saturation <span class="math inline">\(s\)</span> of capillary-trapped CO<span class="math inline">\(_2\)</span> and note that <span class="math inline">\(\frac{\partial\phi}{\partial t}=-\varphi\frac{\partial s}{\partial t}\)</span>.</p>
+<section id="boussinesq-approximation" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="boussinesq-approximation"><span class="header-section-number">2.2.1</span> Boussinesq approximation</h3>
+<p>The first simplication to be made to the governing equations <span class="math inline">\(\eqref{eq:DimensionalHeatTransport}\)</span>-<span class="math inline">\(\eqref{eq:DimensionalEvolution}\)</span> is the Boussinesq approximation, which neglects variations in brine density <span class="math inline">\(\rho\)</span> except in the buoyancy term. In <span class="math inline">\(\eqref{eq:DimensionalContinuity}\)</span> we set <span class="math inline">\(\rho\approx\rho_{\text{ref}}\)</span> for some constant reference brine density <span class="math inline">\(\rho_{\text{ref}}\)</span> to obtain</p>
+<p><span class="math display">\[\begin{align}
+\nabla\cdot\textbf{u}&amp;=\varphi\frac{\partial s}{\partial t} + \frac{R}{\rho_{\text{ref}}} \\
+&amp;=R\bigg(\frac{1}{\rho_{\text{ref}}} - \frac{1}{\varrho}\bigg)
+\end{align}\]</span></p>
+<p>and it follows that by expanding the left-hand side terms in <span class="math inline">\(\eqref{eq:DimensionalSoluteTransport}\)</span> that</p>
+<p><span class="math display">\[\begin{align}
+\varphi(1-s)\frac{\partial c}{\partial t}+\textbf{u}\cdot\nabla c=\nabla\cdot(\mathsf{D}\cdot\nabla c)+R\bigg(1-\frac{c}{\rho_{\text{ref}}}\bigg)
+\end{align}\]</span></p>
+</section>
+<section id="streamfunction-formulation" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="streamfunction-formulation"><span class="header-section-number">2.2.2</span> Streamfunction formulation</h3>
+<p>psi</p>
+</section>
+<section id="pressure-formulation" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="pressure-formulation"><span class="header-section-number">2.2.3</span> Pressure formulation</h3>
+<p>p</p>
+</section>
+<section id="sec-non_dimensionalisation" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="sec-non_dimensionalisation"><span class="header-section-number">2.2.4</span> Non-dimensionalisation &amp; further approximation</h3>
+<p>Before discussing appropriate length, time and velocity scales it is helpful to first assume that the constitutive relations have certain scalings. Firstly we have from the aforementioned Boussinesq approximation <span class="math inline">\((\rho -\rho_{\text{ref}}) g\sim g\Delta\rho\)</span> for some density variation scale <span class="math inline">\(\Delta\rho\)</span>. Likewise for a temperature scale <span class="math inline">\(\Delta\theta\)</span> we scale <span class="math inline">\(\theta\sim\Delta\theta\)</span>. Secondly we expect the concentration of CO<span class="math inline">\(_2\)</span> in brine to be bounded from above by some equilibrium concentration <span class="math inline">\(c_{\text{e}}\)</span> and hence <span class="math inline">\(c\sim c_{\text{e}}\)</span>. To avoid confusion with the saturation <span class="math inline">\(s\)</span> of capillary-trapped CO<span class="math inline">\(_2\)</span> we shall always refer to an equilibrium, rather than saturation, concentration throughout this thesis. We make the scalings <span class="math inline">\(\mu\sim\mu_{\text{ref}}\)</span>, <span class="math inline">\(|\mathsf{K}|\sim K_{\text{ref}}\)</span>, <span class="math inline">\(|\mathsf{G}|\sim G_{\text{ref}}\)</span> and <span class="math inline">\(|\mathsf{D}|\sim D_{\text{ref}}\)</span> from appropriate reference values. Though the porosity is already a dimensionless quantity, it is instructive to rescale according to <span class="math inline">\(\varphi\sim\varphi_{\text{ref}}\)</span> and <span class="math inline">\(\phi\sim\varphi_{\text{ref}}\)</span> such that our rescaled porosities are of order unity. We also scale the reaction rate <span class="math inline">\(R\sim \Delta R\)</span>. We do not yet make particular choices for the length, velocity and time scales which we shall denote by <span class="math inline">\(\mathcal{L}\)</span>, <span class="math inline">\(\mathcal{U}\)</span>, <span class="math inline">\(\mathcal{T}\)</span> to keep our non-dimensionalisation non-specific for now. A particular choice of <span class="math inline">\(\mathcal{L}\)</span>, <span class="math inline">\(\mathcal{U}\)</span>, <span class="math inline">\(\mathcal{T}\)</span> is informed by the details of a specific modelling scenario such as its boundary conditions or domain size and shape. Common choices for the length scale <span class="math inline">\(\mathcal{L}\)</span> include the domain length scale <span class="math inline">\(\mathcal{L}_{\Omega}\)</span> or diffusive length <span class="math inline">\(D_{\text{ref}}/\mathcal{U}\)</span>. Similarly the velocity scale is often chosen as either the Darcy flow speed <span class="math inline">\(K_{\text{ref}}\,g\Delta\rho/\mu_{\text{ref}}\)</span> or diffusive speed <span class="math inline">\(D_{\text{ref}}/\mathcal{L}\)</span>. Modelling scenarios considering the injection of fluid into the domain might also scale velocity with the injection speed <span class="math inline">\(u_{\text{in}}\)</span> prescibed in the boundary conditions. A particular non-dimensionalisation can also be desirable for a numerical method to avoid numerical instabilities caused by excessively large or small terms. Finally the time scale can be constructed from the length and velocity scales as <span class="math inline">\(\varphi_{\text{ref}}\mathcal{L}/\mathcal{U}\)</span>, or alternatively chose as either the reaction time scale <span class="math inline">\(\varphi_{\text{ref}}c_{\text{e}}/\Delta R\)</span> or porosity evolution time scale <span class="math inline">\(\varphi_{\text{ref}}\varrho/\Delta R\)</span>. We use the velocity scale to scale the pressure as <span class="math inline">\(p\sim\mu_{\text{ref}}\,\mathcal{U}\mathcal{L}/K_{\text{ref}}\)</span> and define a non-dimensional reduced pressure</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:NonDimensionalPressure}
+\widehat{p}=\frac{K_{\text{ref}}}{\mu_{\text{ref}}\,\mathcal{U}\mathcal{L}}p + \frac{K_{\text{ref}}\rho_{\text{ref}}\,g}{\mu_{\text{ref}}\,\mathcal{U}}\textbf{e}_g\cdot\widehat{\textbf{x}}
+\end{align}\]</span></p>
+<p>which in effect measures deviations from the hydrostatic pressure in brine at uniform reference density.</p>
+<p>In the following we denote by a hat (e.g.&nbsp;<span class="math inline">\(\textbf{x} = \mathcal{L}\,\widehat{\textbf{x}}\)</span>) the non-dimensional and rescaled variables. After rescaling according to the definitions in Table <a href="#tbl-non_dimensionalisation" class="quarto-xref">Table&nbsp;<span>2.1</span></a>, we obtain the non-dimensional governing equations</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:NonDimensionalHeatTransport}
+\widehat{\varphi}(1-s)\frac{\partial\widehat{\theta}}{\partial\widehat{t}}+\frac{\mathcal{U}\mathcal{T}}{\varphi_{\text{ref}}\,\mathcal{L}}\widehat{\textbf{u}}\cdot\nabla\widehat{c}&amp;=\frac{G_{\text{ref}}\,\mathcal{T}}{\varphi_{\text{ref}}\,\mathcal{L}^2}\widehat{\nabla}\cdot(\widehat{\mathsf{G}}\cdot\widehat{\nabla}\widehat{\theta}\,)\\
+\label{eq:NonDimensionalSoluteTransport}
+\widehat{\varphi}(1-s)\frac{\partial\widehat{c}}{\partial\widehat{t}}+\frac{\mathcal{U}\mathcal{T}}{\varphi_{\text{ref}}\,\mathcal{L}}\widehat{\textbf{u}}\cdot\nabla\widehat{c}&amp;=\frac{D_{\text{ref}}\,\mathcal{T}}{\varphi_{\text{ref}}\,\mathcal{L}^2}\widehat{\nabla}\cdot(\widehat{\mathsf{D}}\cdot\widehat{\nabla}\widehat{c}\,)+\frac{\mathcal{T}\Delta R}{\varphi_{\text{ref}}\,c_{\text{e}}}(1-\varepsilon\eta\widehat{c}\,)\widehat{R}\\
+\label{eq:NonDimensionalContinuity}
+\widehat{\nabla}\cdot\widehat{\textbf{u}}&amp;=-\varepsilon(1-\eta)\frac{\mathcal{L}\Delta R}{\mathcal{U}\,c_{\text{e}}}\widehat{R}\\
+\label{eq:NonDimensionalDarcy}
+\widehat{\textbf{u}}&amp;=-\frac{\widehat{\mathsf{K}}}{\widehat{\mu}}\cdot\left(\widehat{\nabla}\widehat{p}-\frac{K_{\text{ref}}\rho_{\text{ref}}\,g}{\mu_{\text{ref}}\,\mathcal{U}}\widehat{\rho}\,\textbf{e}_g\right) \\
+\label{eq:NonDimensionalEvolution}
+\widehat{\varphi}\frac{\partial s}{\partial\widehat{t}}&amp;=-\varepsilon\frac{\mathcal{T}\Delta R}{\varphi_{\text{ref}}\,c_{\text{e}}}\widehat{R}
+\end{align}\]</span></p>
+<p>where</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:EtaDensityRatio}
+\eta &amp;=\frac{\varrho}{\rho_{\text{ref}}} &lt; 1
+\end{align}\]</span></p>
+<p>is the dimensionless ratio of the single-phase CO<span class="math inline">\(_2\)</span> density to the reference brine density and</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:EpsilonDensityRatio}
+\varepsilon &amp;=\frac{c_{\text{e}}}{\varrho} \ll 1
+\end{align}\]</span></p>
+<p>is the dimensionless ratios of the brine’s equilibrium concentration to the single-phase CO<span class="math inline">\(_2\)</span> density. Since single-phase CO<span class="math inline">\(_2\)</span> is known to be buoyant relative to brine, <span class="math inline">\(\eta&lt;1\)</span>. Given that brine can only hold relatively small amounts of CO<span class="math inline">\(_2\)</span> in solution, <span class="math inline">\(\varepsilon\ll1\)</span> is expected. To quantify the relative size of terms in <span class="math inline">\(\eqref{eq:NonDimensionalHeatTransport}\)</span>-<span class="math inline">\(\eqref{eq:NonDimensionalEvolution}\)</span>, we also introduce the dimensionless parameter groupings</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:AdvectionNumber}
+Ad &amp;= \frac{\mathcal{U}\mathcal{T}}{\varphi_{\text{ref}}\mathcal{L}} \\
+\label{eq:PecletNumber}
+Pe &amp;= \frac{\varphi_{\text{ref}}\,\mathcal{L}^2}{D_{\text{ref}}\,\mathcal{T}} \\
+\label{eq:KineticNumber}
+Ki &amp;= \frac{\mathcal{T}\Delta R}{\varphi_{\text{ref}}\,c_{\text{e}}} \\
+\label{eq:BuoyancyNumber}
+Bu &amp;= \frac{K_{\text{ref}}\Delta\rho\,g}{\mu_{\text{ref}}\,\mathcal{U}}
+\end{align}\]</span></p>
+<p>and recall the definition of the Lewis number (ratio of thermal to solutal diffusivities)</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:LewisNumber}
+Le &amp; =\frac{G_{\text{ref}}}{D_{\text{ref}}} \\
+\end{align}\]</span></p>
+<p><span class="math inline">\(Ad\)</span> and <span class="math inline">\(Ki\)</span> are sizes of the advection and reaction terms respectively. <span class="math inline">\(Pe\)</span> is a Peclet-like number for the solutal diffusion term. <span class="math inline">\(Bu\)</span> quantities the size of the buoyancy term and is in effect the ratio of the Darcy flow speed to the chosen velocity scale. We also denote by</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:NonDimensionalDomainLength}
+Xl = \frac{\mathcal{L}_{\Omega}}{\mathcal{L}}
+\end{align}\]</span></p>
+<p>the non-dimensional domain’s extent. In a specific modelling scenario with <span class="math inline">\(\mathcal{L}\)</span>, <span class="math inline">\(\mathcal{U}\)</span>, <span class="math inline">\(\mathcal{T}\)</span> chosen, the dimensionless groupings <span class="math inline">\(\{Ad, Pe, Ki, Bu, X\}\)</span> will map to familiar dimensionless numbers from fluid dynamics. We consider the <span class="math inline">\(\varepsilon\to0\)</span> limit but retain <span class="math inline">\(\varepsilon\)</span> in <span class="math inline">\(\eqref{eq:NonDimensionalEvolution}\)</span> to allow for spatio-temporal evolution of the saturation <span class="math inline">\(s\)</span>, resulting in the further approximations</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:EpsZeroHeatTransport}
+\widehat{\varphi}(1-s)\frac{\partial\widehat{\theta}}{\partial\widehat{t}}+Ad\,\widehat{\textbf{u}}\cdot\nabla\widehat{c}\,&amp;=\frac{1}{LePe}\widehat{\nabla}\cdot(\widehat{\mathsf{G}}\cdot\widehat{\nabla}\widehat{\theta}\,)\\
+\label{eq:EpsZeroSoluteTransport}
+\widehat{\varphi}(1-s)\frac{\partial\widehat{c}}{\partial\widehat{t}}+Ad\,\widehat{\textbf{u}}\cdot\nabla\widehat{c}\,&amp;\approx\frac{1}{Pe}\widehat{\nabla}\cdot(\widehat{\mathsf{D}}\cdot\widehat{\nabla}\widehat{c}\,)+Ki\,\widehat{R}\\
+\label{eq:EpsZeroContinuity}
+\widehat{\nabla}\cdot\widehat{\textbf{u}}&amp;\approx0\\
+\label{eq:EpsZeroDarcy}
+\widehat{\textbf{u}}&amp;=-\frac{\widehat{\mathsf{K}}}{\widehat{\mu}}\cdot(\widehat{\nabla}\widehat{p}-Bu\,\widehat{\rho}\,\textbf{e}_g) \\
+\label{eq:EpsZeroEvolution}
+\widehat{\varphi}\frac{\partial s}{\partial\widehat{t}}&amp;=-\varepsilon Ki\,\widehat{R}
+\end{align}\]</span></p>
+<p>Unless otherwise stated, we shall henceforth drop the hats from our dimensionless and rescaled variables. We summarise some common choices of <span class="math inline">\(\mathcal{L}\)</span>, <span class="math inline">\(\mathcal{U}\)</span>, <span class="math inline">\(\mathcal{T}\)</span> and their mappings in Table <span class="math inline">\(\ref{tab:DimensionlessMappings}\)</span>, in which we define the solutal Rayleigh number (ratio of Darcy flow to solutal diffusion speeds, or equivalently ratio of solutal diffusion to Darcy flow time scales) as</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:SolutalRayleighNumber}
+Ra &amp;=\frac{\mathcal{L}_\Omega K_{\text{ref}}\,g\Delta\rho}{\mu_{\text{ref}}D_{\text{ref}}}\\
+\end{align}\]</span></p>
+<p>(note that the related thermal Rayleigh number is <span class="math inline">\(LeRa\)</span>) and the Damk"ohler number (ratio of the Darcy flow to reaction time scales) as</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:DamkohlerNumber}
+Da&amp;=\frac{\mathcal{L}_\Omega\mu_{\text{ref}}\Delta R}{K_{\text{ref}}g\Delta\rho\,c_{\text{e}}} \\
+\end{align}\]</span></p>
+<p><span class="math inline">\(Rb\)</span> and <span class="math inline">\(Ra\)</span> are readily identified as thermal and solutal Rayleigh numbers, respectively. Noting that <span class="math inline">\(G_{\text{ref}}/H\)</span> and <span class="math inline">\(D_{\text{ref}}/H\)</span> are diffusive speeds, we see that <span class="math inline">\(Rb\)</span> and <span class="math inline">\(Ra\)</span> are ratios of advective to diffusive speeds, or alternatively a ratio of diffusive to advective time scales, which in effect quantifies the strength of advective relative to solutal diffusive transport. We are primarily interested in the limits where advection is much quicker than diffusion, so <span class="math inline">\(Rb\gg1\)</span> and <span class="math inline">\(Ra\gg1\)</span>.</p>
+<p><span class="math inline">\(Da\)</span> is the Damköhler number for the dissolution reaction. Noting that the quantity <span class="math inline">\(c_{\text{e}}/\Delta R\)</span> has units of time and may be interepreted as the dissolution time scale, we see that <span class="math inline">\(Da\)</span> is a ratio of the advective to dissolution time scales. In the limit where dissolution is much quicker than advection, we have <span class="math inline">\(Da\gg1\)</span>.</p>
+<div id="tbl-non_dimensionalisation" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-non_dimensionalisation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.1: Non-dimensional and rescaled quantities
+</figcaption>
+<div aria-describedby="tbl-non_dimensionalisation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Quantity</th>
+<th>Scale</th>
+<th>Non-Dimensionalisation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\textbf{x}\)</span></td>
+<td><span class="math inline">\(\mathcal{L}\)</span></td>
+<td><span class="math inline">\(\widehat{\textbf{x}}=\textbf{x}/\mathcal{L}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\theta\)</span></td>
+<td><span class="math inline">\(\theta\)</span></td>
+<td><span class="math inline">\(\widehat{\theta}=(\theta - \theta_{\text{ref}})/\Delta \theta\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(c\)</span></td>
+<td><span class="math inline">\(c_{\text{e}}\)</span></td>
+<td><span class="math inline">\(\widehat{c}=c/c_{\text{e}}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\textbf{u}\)</span></td>
+<td><span class="math inline">\(\mathcal{U}\)</span></td>
+<td><span class="math inline">\(\widehat{\textbf{u}}=\textbf{u}/\mathcal{U}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(t\)</span></td>
+<td><span class="math inline">\(\mathcal{T}\)</span></td>
+<td><span class="math inline">\(\widehat{t}=t/\mathcal{T}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(p\)</span></td>
+<td><span class="math inline">\(\mu_{\text{ref}}\,\mathcal{U}\mathcal{L}/K_{\text{ref}}\)</span></td>
+<td><span class="math inline">\(\eqref{eq:NonDimensionalPressure}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\varphi\)</span></td>
+<td><span class="math inline">\(\varphi_{\text{ref}}\)</span></td>
+<td><span class="math inline">\(\widehat{\varphi}=\varphi/\varphi_{\text{ref}}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\phi\)</span></td>
+<td><span class="math inline">\(\varphi_{\text{ref}}\)</span></td>
+<td><span class="math inline">\(\widehat{\phi}=\phi/\varphi_{\text{ref}}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\rho\)</span></td>
+<td><span class="math inline">\(\Delta\rho\)</span></td>
+<td><span class="math inline">\(\widehat{\rho}=(\rho - \rho_{\text{ref}})/\Delta\rho\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mu\)</span></td>
+<td><span class="math inline">\(\mu_{\text{ref}}\)</span></td>
+<td><span class="math inline">\(\widehat{\mu}=\mu/\mu_{\text{ref}}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mathsf{K}\)</span></td>
+<td><span class="math inline">\(K_{\text{ref}}\)</span></td>
+<td><span class="math inline">\(\widehat{\mathsf{K}}=\mathsf{K}/K_{\text{ref}}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mathsf{G}\)</span></td>
+<td><span class="math inline">\(G_{\text{ref}}\)</span></td>
+<td><span class="math inline">\(\widehat{\mathsf{G}}=\mathsf{G}/D_{\text{ref}}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mathsf{D}\)</span></td>
+<td><span class="math inline">\(D_{\text{ref}}\)</span></td>
+<td><span class="math inline">\(\widehat{\mathsf{D}}=\mathsf{D}/D_{\text{ref}}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(R\)</span></td>
+<td><span class="math inline">\(\Delta R\)</span></td>
+<td><span class="math inline">\(\widehat{R}=R/\Delta R\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div id="tbl-scaling_choice" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-scaling_choice-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2.2: My Caption
+</figcaption>
+<div aria-describedby="tbl-scaling_choice-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\mathcal{L}\)</span></th>
+<th><span class="math inline">\(\mathcal{U}\)</span></th>
+<th><span class="math inline">\(\mathcal{T}\)</span></th>
+<th><span class="math inline">\(\{Ad, Pe, Ki, Bu, Xl\}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\mathcal{L}_\Omega\)</span></td>
+<td><span class="math inline">\(K_{\text{ref}}\,g\Delta\rho/\mu_{\text{ref}}\)</span></td>
+<td><span class="math inline">\(\varphi_{\text{ref}}\mathcal{L}/\mathcal{U}\)</span></td>
+<td><span class="math inline">\(\{1, Ra, Da, 1, 1\}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(D_{\text{ref}}/\mathcal{U}\)</span></td>
+<td><span class="math inline">\(K_{\text{ref}}\,g\Delta\rho/\mu_{\text{ref}}\)</span></td>
+<td><span class="math inline">\(\varphi_{\text{ref}}\mathcal{L}/\mathcal{U}\)</span></td>
+<td><span class="math inline">\(\{1, 1, Da/Ra, 1, Ra\}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(G_{\text{ref}}/\mathcal{U}\)</span></td>
+<td><span class="math inline">\(K_{\text{ref}}\,g\Delta\rho/\mu_{\text{ref}}\)</span></td>
+<td><span class="math inline">\(\varphi_{\text{ref}}\mathcal{L}/\mathcal{U}\)</span></td>
+<td><span class="math inline">\(\{1, Le, Da/(LeRa), 1, Ra/Le\}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mathcal{L}_\Omega\)</span></td>
+<td><span class="math inline">\(D_{\text{ref}}/\mathcal{L}\)</span></td>
+<td><span class="math inline">\(\varphi_{\text{ref}}\mathcal{L}/\mathcal{U}\)</span></td>
+<td><span class="math inline">\(\{1, 1, RaDa, Ra, 1\}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mathcal{L}_\Omega\)</span></td>
+<td><span class="math inline">\(D_{\text{ref}}/\mathcal{L}\)</span></td>
+<td><span class="math inline">\(\varphi_{\text{ref}}c_{\text{e}}/\Delta R\)</span></td>
+<td><span class="math inline">\(\{1/(RaDa), RaDa, Ra, 1\}\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(D_{\text{ref}}/\mathcal{U}\)</span></td>
+<td><span class="math inline">\(K_{\text{ref}}\,g\Delta\rho/\mu_{\text{ref}}\)</span></td>
+<td><span class="math inline">\(\varphi_{\text{ref}}c_{\text{e}}/\Delta R\)</span></td>
+<td><span class="math inline">\(\{Ra/Da, RaDa, 1, \ldots, \ldots\}\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\sqrt{D_{\text{ref}}\mathcal{T}/\varphi_{\text{ref}}}\)</span></td>
+<td><span class="math inline">\(\varphi_{\text{ref}}\mathcal{L}/\mathcal{T}\)</span></td>
+<td><span class="math inline">\(\varphi_{\text{ref}}c_{\text{e}}/\Delta R\)</span></td>
+<td><span class="math inline">\(\{1, 1, 1, \sqrt{Ra/Da}, \sqrt{RaDa}\}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+</section>
+<section id="diagnostic-equations" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="diagnostic-equations"><span class="header-section-number">2.3</span> Diagnostic equations</h2>
+<section id="overview" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="overview"><span class="header-section-number">2.3.1</span> Overview</h3>
+<p>We refer to the quantities <span class="math inline">\((\theta, c, \textbf{u}, p, s)\)</span> or <span class="math inline">\((\theta, c, \psi, \textbf{u}, p, s)\)</span> obtained by direct numerical solution of to <span class="math inline">\(\eqref{eq:NonDimensionalHeatTransport}\)</span>-<span class="math inline">\(\eqref{eq:DimensionalSoluteTransport}\)</span> as primary quantities. Our postprocessing and modelling shall also make use of a number of so-called secondary quantities, derived from the primary quantities. For convenience and to avoid repetition in future chapters, we briefly define in this section some of these secondary quantities, and any methodology behind their computation. Some secondary quantities are amenable to being computed and saved `on-the-fly’ during the course of a numerical simulation, whereas others are better suited to being computed at the postprocess stage, for example using a third-party package from the scientific Python ecosystem or third-party visualization software such as ParaView [cite]. A summary of these quantities is tabulated in Table <span class="math inline">\(\ref{tab:SecondaryData}\)</span>.</p>
+</section>
+<section id="global-minima-maxima" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="global-minima-maxima"><span class="header-section-number">2.3.2</span> Global minima &amp; maxima</h3>
+<p>Tracking the global minima and maxima of the temperature, concentration and velocity over the course of a numerical simulation is useful from both a physical and numerical perspective. Physically, we can identify certain behaviours, such as the onset of convection or attainment of an equilibrium state, from a timeseries plot of these scalar quantities. With the above discussion of numerical stability in mind, tracking minima and maxima of the temperature and concentration also serves as a diagnostic tool to detect spurious oscillations resulting in unphysical values outside of the physically-permitted range.</p>
+<p>To demonstrate the computation of global minima and maxima, consider as examples the scalar-valued temperature <span class="math inline">\(\theta^{n}=\sum_j\theta^{n}_j\xi_j\)</span> and vector-valued velocity <span class="math inline">\(\textbf{u}^n=\sum_ju^n_j\boldsymbol\xi_j\)</span>. In the scalar-valued case, we first interpolate <span class="math inline">\(\theta^n\)</span> into the <span class="math inline">\(\text{P}_1\)</span> finite element function space, unless it is already the case that <span class="math inline">\(\xi_j=\xi_j^{\text{P}_1}\)</span>, to obtain <span class="math inline">\((\theta^{\text{P}_1})^{n}=\sum_j(\theta^{\text{P}_1})_j^n\xi_j^{\text{P}_1}\)</span>. Then we have</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:MinimumScalar}
+\min_{\textbf{x}}(\theta^n) &amp;= \min_j\{(\theta^{\text{P}_1})_j^n\} \\
+\label{eq:MaximumScalar}
+\max_{\textbf{x}}(\theta^n) &amp;= \max_j\{(\theta^{\text{P}_1})_j^n\}
+\end{align}\]</span></p>
+<p>In the case of a <span class="math inline">\(d\)</span>-dimensional vector, we interpolate to a <span class="math inline">\(\text{P}_1^d\)</span> vector space to obtain</p>
+<p><span class="math display">\[\begin{align}
+(\textbf{u}^{\text{P}_1})^n = \sum_j
+\begin{pmatrix}
+(u_x^{\text{P}_1})_j^n \\
+(u_y^{\text{P}_1})_j^n \\
+\vdots
+\end{pmatrix}\xi_j^{\text{P}_1}
+\end{align}\]</span></p>
+<p>Denoting by <span class="math inline">\(|\cdot|\)</span> the Euclidean vector norm, we have</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:MinimumVector}
+\min_{\textbf{x}}|\textbf{u}^n| &amp;= \min_j\bigg\{\sqrt{|(u_x^{\text{P}_1})_j^n|^2 + |(u_y^{\text{P}_1})_j^n|^ +\dots}^{1/2}\bigg\} \\
+\label{eq:MaximumVector}
+\max_{\textbf{x}}|\textbf{u}^n| &amp;= \max_j\bigg\{\sqrt{|(u_x^{\text{P}_1})_j^n|^2 + |(u_y^{\text{P}_1})_j^n|^ +\dots}^{1/2}\bigg\}
+\end{align}\]</span></p>
+<p>In the case of a <span class="math inline">\(d\)</span>-dimensional vector-valued quantity <span class="math inline">\(\textbf{u}=\sum_jU_j\boldsymbol\xi_j\)</span> with vector-valued basis functions <span class="math inline">\(\{\boldsymbol\xi_j\}\)</span>, the function must first be interpolated to a <span class="math inline">\(\text{P}_1^d\)</span> vector space (if not already in such a space) and then the scalar-valued components extracted as <span class="math inline">\((u_x, u_y, \dots) = \sum_j(U^x_j, U^y_j, \dots)\xi_j^{\text{P}_1}\)</span>. Using the conventional Euclidean norm, the global maximum is</p>
+<p><span class="math display">\[\begin{equation}
+\max_{\textbf{x}}|\textbf{u}|=\max_j\{\sqrt{(U^x_j)^2 + (U^y_j)^2+\dots}^{1/2}\}
+\end{equation}\]</span></p>
+<p>and similarly for the global minimum. In our simulation we keep track not only of <span class="math inline">\(\max_{\textbf{x}}|\textbf{u}|\)</span>, but also <span class="math inline">\(\min_{\textbf{x}}|\textbf{u}|\)</span>, <span class="math inline">\(\max_{\textbf{x}}(c)\)</span>, <span class="math inline">\(\min_{\textbf{x}}(c)\)</span>, <span class="math inline">\(\max_{\textbf{x}}(s)\)</span> and <span class="math inline">\(\min_{\textbf{x}}(s)\)</span> as diagnostic quantities for both the providing insights into both the flow behaviour and validity of the numerical solution. Physically, extrema of the concentration field should obey the constraint <span class="math inline">\(0\leq c\leq1\)</span> at all times, and likewise for the saturation field <span class="math inline">\(0\leq s\leq s_r\)</span>. These constraints can be verified by a timeseries plot during postprocessing, or alternatively used during the course of the simulation to terminate a simulation producing spurious results.</p>
+</section>
+<section id="spatial-averages" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="spatial-averages"><span class="header-section-number">2.3.3</span> Spatial averages</h3>
+<p>The spatial average of a quantity, over either a subdomain <span class="math inline">\(\varpi\subset\Omega\)</span> or spatial coordinate, will be relevant to a number of postprocessing calculations. We denote the operation of spatial averaging in `bra-ket’ notation as</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:SubdomainAverage}
+\langle \theta\rangle_\varpi(t) = \frac{1}{\text{vol}(\varpi)}\int_{\textbf{x}\in\varpi} \theta(\textbf{x}, t)~\text{d}\Omega
+\end{align}\]</span></p>
+<p>over a subdomain. In the case that <span class="math inline">\(\Omega\)</span> is a rectangule (spanned by <span class="math inline">\(x, y\)</span>) or a cuboid (spanned by <span class="math inline">\(x, y, z\)</span>), we define the horizontal average as</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:HorizontalAverage2D}
+\langle \theta\rangle_{x_1&lt;x&lt;x_2}(y, t) &amp;= \frac{1}{x_2-x_1}\int_{x_1}^{x_2} \theta(x, y, t)~\text{d}x \\
+\label{eq:HorizontalAverage3D}
+\langle \theta\rangle_{x_1&lt;x&lt;x_2, y_1&lt;y&lt;y_2}(z, t) &amp;= \frac{1}{(x_2-x_1)(y_2-y_1)}\int_{y_1}^{y_2}\int_{x_1}^{x_2} \theta(x, y, z, t)~\text{d}x\text{d}y
+\end{align}\]</span></p>
+</section>
+<section id="co_2-mass" class="level3" data-number="2.3.4">
+<h3 data-number="2.3.4" class="anchored" data-anchor-id="co_2-mass"><span class="header-section-number">2.3.4</span> CO<span class="math inline">\(_2\)</span> mass</h3>
+<p>Our model of the dissolution of capillary-trapped CO<span class="math inline">\(_2\)</span> contains two contributions to the total amount of geologically-sequestered CO<span class="math inline">\(_2\)</span>: the capillary-trapped mass</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:MassCapillaryTrapped}
+m_C(t) &amp;= \frac{1}{\varepsilon}\int_{\textbf{x}\in\Omega} s(\textbf{x}, t)~\text{d}\Omega
+&amp;=\frac{1}{\varepsilon}\int_0^L\int_{h(x, t)}^1 s(x,y, t)~\text{d}y\,\text{d}x\
+\end{align}\]</span>\end{align}</p>
+<p>and the dissolved mass</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:MassDissolved}
+m_D(t) &amp;= \int_{\textbf{x}\in\Omega}(1-s(\textbf{x}, t))c(\textbf{x}, t)~\text{d}\Omega \\
+&amp;=\int_0^L\int_0^1(1-s(x,y, t))c(x,y,t)~\text{d}y\,\text{d}x
+\end{align}\]</span></p>
+<p>In a closed domain (i.e.&nbsp;no-flux boundary conditions everywhere on <span class="math inline">\(\partial\Omega\)</span>), the total mass <span class="math inline">\(m_C(t)+m_D(t)\)</span> is a conserved quantity. The computation of domain integrals such as <span class="math inline">\(\eqref{eq:MassCapillaryTrapped}\)</span> and <span class="math inline">\(\eqref{eq:MassDissolved}\)</span> is inexpensive and readily handled by the FEniCS library so the computation of <span class="math inline">\(m_C\)</span> and <span class="math inline">\(m_D\)</span> can be performed during the course of the numerical simulation.</p>
+</section>
+<section id="flux" class="level3" data-number="2.3.5">
+<h3 data-number="2.3.5" class="anchored" data-anchor-id="flux"><span class="header-section-number">2.3.5</span> Flux</h3>
+<p>We define the solutal and thermal fluxes, split into their advective and diffusive components, across a contour <span class="math inline">\(\Gamma\)</span> respectively as</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:ThermalAdvectiveFlux}
+J_A(t;\Gamma) &amp; = \int_\Gamma\text{d}\Gamma~\textbf{n}\cdot\textbf{u}\,\theta\\
+\label{eq:ThermalDiffusiveFlux}
+J_D(t;\Gamma)  &amp; = \int_\Gamma\text{d}\Gamma~ \frac{1}{Rb}\,\textbf{n}\cdot(\mathsf{G}\cdot\nabla\theta) \\
+\label{eq:SolutalAdvectiveFlux}
+F_A(t;\Gamma) &amp; = \int_\Gamma\text{d}\Gamma~\textbf{n}\cdot\textbf{u}\,c\\
+\label{eq:SolutalDiffusiveFlux}
+F_D(t;\Gamma)  &amp; = \int_\Gamma\text{d}\Gamma~ \frac{1}{Ra}\,\textbf{n}\cdot(\mathsf{D}\cdot\nabla c)
+\end{align}\]</span></p>
+<p>and the corresponding total fluxes</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:ThermalFlux}
+J(t;\Gamma)=J_A(t;\Gamma)+J_D(t;\Gamma) \\
+\label{eq:SolutalFlux}
+F(t;\Gamma)=F_A(t;\Gamma)+F_D(t;\Gamma)
+\end{align}\]</span></p>
+<p>As with the above domain integrals for CO<span class="math inline">\(_2\)</span> mass, the FEniCS library computes contour integrals such as <span class="math inline">\(\eqref{eq:ThermalAdvectiveFlux}\)</span>-<span class="math inline">\(\eqref{eq:SolutalDiffusiveFlux}\)</span> with ease, provided that the contour <span class="math inline">\(\Gamma\)</span> lies on the mesh’s cell facets.</p>
+</section>
+<section id="events" class="level3" data-number="2.3.6">
+<h3 data-number="2.3.6" class="anchored" data-anchor-id="events"><span class="header-section-number">2.3.6</span> Events</h3>
+<p>As alluded to in our discussion of minima and maxima, we can identify from the timeseries <span class="math inline">\(q(t)\)</span> of some scalar-valued quantity certain specific times at which physically-interesting behaviours or regime changes occur. We shall refer any such specific times as an `event’. For example, one possible definition for the onset of convection</p>
+<p><span class="math display">\[\begin{align}
+t_{\text{onset};\epsilon}=\underset{t}{\text{argmin}}\{\max_{\textbf{x}}|\textbf{u}|(t)~:~\max_{\textbf{x}}|\textbf{u}|(t) &gt; \epsilon\}
+\end{align}\]</span></p>
+<p>which corresponds to the time when the maximum speed first exceeds some small threshold value <span class="math inline">\(0&lt;\epsilon\ll 1\)</span>. In a similar vein the shutdown of convection would be</p>
+<p><span class="math display">\[\begin{align}
+t_{\text{shut};\epsilon}=\underset{t}{\text{argmax}}\{\max_{\textbf{x}}|\textbf{u}|(t)~:~\max_{\textbf{x}}|\textbf{u}|(t) &gt; \epsilon\}
+\end{align}\]</span></p>
+<p>for when the maximum speed lass exceeds the threshold value. We defer the defition of further scenario-specific events to later chapters.</p>
+</section>
+<section id="plume-statistics" class="level3" data-number="2.3.7">
+<h3 data-number="2.3.7" class="anchored" data-anchor-id="plume-statistics"><span class="header-section-number">2.3.7</span> Plume statistics</h3>
+<p>We identify a set of solutal plumes as the contour at which concentration <span class="math inline">\(c\)</span> is either equal to some specified value <span class="math inline">\(\alpha\)</span></p>
+<p><span class="math display">\[\begin{equation}
+\Gamma_{P_c}(t;\alpha)=\big\{\textbf{x}\in\Omega~:~c(\textbf{x},t)=\alpha\big\}
+\end{equation}\]</span></p>
+<p>or a value at a fraction <span class="math inline">\(0\leq f\leq1\)</span> of its instantaneous range <span class="math inline">\([\min_{\textbf{x}}c, \max_{\textbf{x}}c]\)</span></p>
+<p><span class="math display">\[\begin{equation}
+\Gamma_{P_c}(t;f)=\big\{\textbf{x}\in\Omega~:~c(\textbf{x},t)=f\min_{\textbf{x}}c(\textbf{x},t)+(1-f)\max_{\textbf{x}}c(\textbf{x},t)\big\}
+\end{equation}\]</span></p>
+<p>Likewise we define thermal plumes <span class="math inline">\(\Gamma_{P_\theta}(t;\alpha)\)</span> and <span class="math inline">\(\Gamma_{P_\theta}(t;f)\)</span> with <span class="math inline">\(\theta\)</span> replacing <span class="math inline">\(c\)</span> in the above contour definitions. Plume tips are then defined respectively as the set of cooordinates of the contour’s local maxima and minima with respect to a coordinate <span class="math inline">\(x_P\)</span> aligned with the direction of plume motion. In the case of plumes arising from fluid density contrasts, gravity is evidently the driving force for plume motion so <span class="math inline">\(x_P=-\textbf{e}_g\cdot\textbf{x}\)</span>, which would simply be <span class="math inline">\(x_P=y\)</span> for a horizontal 2D domain and <span class="math inline">\(x_P=z\)</span> for a horizontal 3D domain. Hence for buoyant plumes we identify the ascending (<span class="math inline">\(\uparrow\)</span>) and descending (<span class="math inline">\(\downarrow\)</span>) plume tips at time <span class="math inline">\(t\)</span> as</p>
+<p><span class="math display">\[\begin{align}
+\{\textbf{x}^{\uparrow\,j}(t)\}_{j=1}^{N^\uparrow(t)} &amp;= \{\textbf{x}~:~\textbf{x}\in\underset{x_P}{\text{locmax}}~\Gamma_{P}(t)\} \\
+\{\textbf{x}^{\downarrow\,j}(t)\}_{j=1}^{N^\downarrow(t)} &amp;= \{\textbf{x}~:~\textbf{x}\in\underset{x_P}{\text{locmin}}~\Gamma_{P}(t)\}
+\end{align}\]</span></p>
+<p>where <span class="math inline">\(N^{\uparrow\downarrow}(t)\)</span> is the total number of ascending and descending plumes. The trajectory of the <span class="math inline">\(j^{\text{th}}\)</span> plume tip is given by the sequence of coordinates <span class="math inline">\(\{\textbf{x}^{\uparrow\downarrow\,j}(t^n)\}_n\)</span> for all times <span class="math inline">\(t^n\)</span> in the time interval characterising the <span class="math inline">\(j^{\text{th}}\)</span> plume tip’s lifetime (i.e.&nbsp;when that particular local maximum or minimum exists). The velocity of the <span class="math inline">\(j^{\text{th}}\)</span> plume tip is given by</p>
+<p><span class="math display">\[\begin{align}
+u^{\uparrow\downarrow\,j}(t)=\frac{\text{d}}{\text{d}t}(x_P^{\uparrow\downarrow\,j}(t))
+\end{align}\]</span></p>
+<p>so the average ascending and descending plume tip velocity is</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:PlumeVelocity}
+u^{\uparrow\downarrow}(t)=\frac{1}{N_{\uparrow\downarrow}(t)}\sum_{j=1}^{N_{\uparrow\downarrow}}u^{\uparrow\downarrow\,j}(t)
+\end{align}\]</span></p>
+<p>The following calculations of plume width and wavenumber are generalizable to 3D but for clarity in our exposition we now consider a horizontal 2D domain. Given a fixed reference height <span class="math inline">\(y_{\text{ref}}\)</span>, we compute the width of the <span class="math inline">\(j^{\text{th}}\)</span> plume by first defining its vertical extent as <span class="math inline">\(y_{\text{ref}}\leq y\leq y^{\uparrow\downarrow\,j}\)</span> or <span class="math inline">\(y^{\uparrow\downarrow\,j}\leq y\leq y_{\text{ref}}\)</span> in the case of ascending and descending plumes respectively. Next we set the height at which to measure to measure its width as <span class="math inline">\(h_j=f\min(y^{\uparrow\downarrow\,j}, y_{\text{ref}}) + (1-f)\max(y^{\uparrow\downarrow\,j}, y_{\text{ref}})\)</span> for some fraction <span class="math inline">\(0\leq f\leq1\)</span>. By determining the coordinates <span class="math inline">\((x_-^{\uparrow\downarrow\,j}, h_j)\)</span> and <span class="math inline">\((x_+^{\uparrow\downarrow\,j}, h_j)\)</span> where the local plume contour intersects the horizontal line <span class="math inline">\(y=h_j\)</span>, we deduce the plume width <span class="math inline">\(w^{\uparrow\downarrow\,j}=x_+^{\uparrow\downarrow\,j} - x_-^{\uparrow\downarrow\,j}\)</span>. Similarly to <span class="math inline">\(\eqref{eq:PlumeVelocity}\)</span> the average ascending and descending plume width is</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:PlumeWidth}
+w^{\uparrow\downarrow}(t)=\frac{1}{N_{\uparrow\downarrow}(t)}\sum_{j=1}^{N_{\uparrow\downarrow}}w_{P}^j(t)
+\end{align}\]</span></p>
+<p>The instantaneous solutal plume wavenumber at height <span class="math inline">\(y\)</span></p>
+<p><span class="math display">\[\begin{align}
+k_{P_c}(y,t)=\frac{\int~k'\mathbb{P}_c(k';y,t)\text{d}k'}{\int\mathbb{P}_c(k';y,t)\text{d}k}
+\end{align}\]</span></p>
+<p>is the expectation value of the power spectrum</p>
+<p><span class="math display">\[\begin{align}
+\mathbb{P}_c(k';y,t)=\lim_{T\to\infty}\frac{1}{T}\int|\hat{c}(k';y,t)|^2~\text{d}k'
+\end{align}\]</span></p>
+<p>of the Fourier-transformed concentration <span class="math inline">\(\hat{c}(k';y,t)\)</span>. Finally we denote by <span class="math inline">\(\overline{k_{P_c}(y)}^{_{t,t'}}\)</span> the time-averaged wavenumber at height <span class="math inline">\(y\)</span> over an interval <span class="math inline">\(t\in[t, t']\)</span>. The thermal plume wavenumber <span class="math inline">\(k_{P_\theta}(y,t)\)</span> is likewise defined from the temperature <span class="math inline">\(\theta\)</span>.</p>
+</section>
+<section id="reaction-front" class="level3" data-number="2.3.8">
+<h3 data-number="2.3.8" class="anchored" data-anchor-id="reaction-front"><span class="header-section-number">2.3.8</span> Reaction front</h3>
+<p>Recall from <span class="math inline">\(\ref{sec:SolutalModel}\)</span> that we identify the reaction front height <span class="math inline">\(h(x,t)\)</span> as the curve partitioning the domain <span class="math inline">\(\Omega\)</span> into a reacted lower region <span class="math inline">\(\Omega^-(t)\)</span> where <span class="math inline">\(s=0\)</span> and an unreacted upper region <span class="math inline">\(\Omega^+(t)\)</span> having <span class="math inline">\(0&lt;s\leq s_r\)</span>. Mathematically, this is defined as the countour</p>
+<p><span class="math display">\[\begin{align}
+\Gamma_R(t)=\{(x,y)\in\Omega~:~s(x,y,t)=0 \iff y=h(x,t)\}   
+\end{align}\]</span></p>
+<p>though numerically we search using the package’s contour finder for <span class="math inline">\(\Gamma_R(t;\epsilon_R)=\{(x,y)\in\Omega~:~s=\epsilon_R\}\)</span> with some small tolerance <span class="math inline">\(0&lt;\epsilon_R\ll1\)</span> to obtain <span class="math inline">\(h(x,t;\epsilon_R)\)</span>. This method requires <span class="math inline">\(s\)</span> to be represented by a array data structure so computation is deferred to the postprocess stage. To quantify the nonlinear deformation of the initially horizontal reaction front as time progresses, we compute its normalized arc length</p>
+<p><span class="math display">\[\begin{align}
+\text{len}(h) = \frac{1}{L}\int_0^L\sqrt{1+\bigg(\frac{\partial h}{\partial x}\bigg)^2}~\text{d}x\geq1
+\end{align}\]</span></p>
+<p>and standard deviation</p>
+<p><span class="math display">\[\begin{align}
+\text{sdev}(h)= \bigg(\frac{1}{L}\int_0^L(h - \langle h\rangle_x)^2~\text{d}x\bigg)^{1/2}\geq0
+\end{align}\]</span></p>
+<p>from the horizontally-averaged height <span class="math inline">\(\langle h\rangle_x=\frac{1}{L}\int_0^L h(x,t)~\text{d}t\)</span></p>
+</section>
+<section id="fluid-front" class="level3" data-number="2.3.9">
+<h3 data-number="2.3.9" class="anchored" data-anchor-id="fluid-front"><span class="header-section-number">2.3.9</span> Fluid front</h3>
+<p>Accompanying the concept of a reaction front, we have the fluid-fluid front, which for simplicity we abbreviate to fluid front, separating fluid rising into the unreacted upper region from the fluid at equilibrium concentration above it. As above, we define this mathematically as</p>
+<p><span class="math display">\[\Gamma_F(t)=\{(x,y)\in\Omega~:~c(x,y,t)=1 \iff y=h_F(x,t)\}\]</span></p>
+<p>and implement it numerically with a small tolerance <span class="math inline">\(0&lt;\epsilon_F\ll1\)</span> such that searches for the contour <span class="math inline">\(\Gamma_F(t;\varepsilon_F)=\{(x_i,y_i)\in\Omega_{N_x,N_y}~:~c=1-\epsilon_F\}\)</span></p>
+</section>
+</section>
+<section id="numerical-methods" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="numerical-methods"><span class="header-section-number">2.4</span> Numerical methods</h2>
+<section id="discretization-in-time" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="discretization-in-time"><span class="header-section-number">2.4.1</span> Discretization in time</h3>
+<p>To solve <span class="math inline">\(\eqref{eq:NonDimensionalHeatTransport}\)</span>-<span class="math inline">\(\eqref{eq:NonDimensionalEvolution}\)</span> numerically, we use the finite element method in space with finite differences in time taken before discretization in space. Denoting by <span class="math inline">\(t^n\)</span>, <span class="math inline">\(\Delta t^n\)</span> the time and timestep at the <span class="math inline">\(n^{\text{th}}\)</span> step of the numerical integration, such that <span class="math inline">\(\theta(\textbf{x}, t^n)\approx\theta^n(\textbf{x})\)</span> and the initial time is <span class="math inline">\(t^0=0\)</span>, the discretized system at the <span class="math inline">\(n^{\text{th}}\)</span> step is</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:FiniteDifferenceHeatTransport}
+\mathcal{D}_\phi(\phi)\frac{\theta^{n+1} - \theta^n}{\Delta t^n} + \mathcal{D}_{A,\theta}(\textbf{u}\cdot\nabla\theta) &amp;= \frac{1}{Rb}\nabla\cdot\mathcal{D}_{D,\theta}(\mathsf{G}\cdot\nabla\theta) \\
+\label{eq:FiniteDifferenceSoluteTransport}
+\mathcal{D}_\phi(\phi)\frac{c^{n+1} - c^n}{\Delta t^n} + \mathcal{D}_{A,c}(\textbf{u}\cdot\nabla c) &amp;= \frac{1}{Ra}\nabla\cdot\mathcal{D}_{D,c}(\mathsf{D}\cdot\nabla c) + Da\,\mathcal{D}_{R,c}(R) \\
+\label{eq:FiniteDifferenceContinuity}
+\nabla\cdot\textbf{u}^n &amp;= 0 \\
+\label{eq:FiniteDifferenceDarcy}
+\textbf{u}^n &amp;= - \frac{\mathsf{K}^n}{\mu^n}(\nabla p^n +\rho^n\textbf{e}_g) \\
+\label{eq:FiniteDifferenceEvolution}
+\varphi\frac{s^{n+1} - s^n}{\Delta t^n} &amp;= -\varepsilon Da\mathcal{D}_{R,s}(R)
+\end{align}\]</span></p>
+<p>and is to be solved for <span class="math inline">\(\theta^{n+1}\)</span> <span class="math inline">\(c^{n+1}\)</span>, <span class="math inline">\(\textbf{u}^n\)</span>, <span class="math inline">\(p^n\)</span> and <span class="math inline">\(s^{n+1}\)</span>. <span class="math inline">\(\mathcal{D}\)</span> denotes a finite difference operator acting on a time-dependent quantity or expression to produce a discretization in time. For example, a second-order Adams-Bashforth operator <span class="math inline">\(\mathcal{D}=\text{AB}_2\)</span> produces</p>
+<p><span class="math display">\[\begin{align}
+\text{AB}_2(\theta)=\frac{3}{2}\theta^n - \frac{1}{2}\theta^{n-1}
+\end{align}\]</span></p>
+<p>which is explicit with respect to <span class="math inline">\(\theta\)</span>, and the backward Euler operator <span class="math inline">\(\mathcal{D}=\text{BE}\)</span> produces</p>
+<p><span class="math display">\[\begin{align}
+\text{BE}(\theta)=\theta^{n+1}
+\end{align}\]</span></p>
+<p>which is implicit with respect to <span class="math inline">\(\theta\)</span> since <span class="math inline">\(\theta^{n+1}\)</span> is being solved for. A general finite difference operator can be defined as producing a linear superposition of future, present and previous values of the time-dependent quantity of expression</p>
+<p><span class="math display">\[\begin{align}
+\mathcal{D}(\theta) = \sum_{j\leq 1}\alpha_j\theta^{n+j}
+\end{align}\]</span></p>
+<p>according to its set of constant coefficients <span class="math inline">\(\{\alpha_j\}\)</span>. Note that <span class="math inline">\(\alpha_1=0\)</span> produces an explicit discretization. When discretizing an expression, such as the advection <span class="math inline">\(a(\textbf{u}, \theta)=\textbf{u}\cdot\nabla\theta\)</span>, it possible to discretize expression-wise as</p>
+<p><span class="math display">\[\begin{align}
+\mathcal{D}(a(\textbf{u}, \theta)) = \sum_{j\leq 1}\alpha_ja(\textbf{u}^{n+j}, \theta^{n+j})
+\end{align}\]</span></p>
+<p>or if <span class="math inline">\(\mathcal{D}\)</span> is specified as the tuple <span class="math inline">\((\mathcal{D}_{\textbf{u}}, \mathcal{D}_\theta)\)</span> then we discretize argument-wise as</p>
+<p><span class="math display">\[\begin{align}
+(\mathcal{D}_{\textbf{u}}, \mathcal{D}_\theta)(a(\textbf{u}, \theta)) = a(\mathcal{D}_{\textbf{u}}(\textbf{u}), \mathcal{D}_\theta(\theta))
+\end{align}\]</span></p>
+<p>In our programming of a numerical solution we avoid hard-coding any particular finite difference discretizations, instead allowing each <span class="math inline">\(\mathcal{D}\)</span> to be specified as an input parameter to the numerical simulation program. A more detailed discussion of our implementation is deferred to <span class="math inline">\(\ref{chap:Software}\)</span>.</p>
+<p>To satisfy stability criteria with respect to both advection and reaction, the timestep <span class="math inline">\(\Delta t^n\)</span> must be computed adaptively at each step by choosing whicever is smallest between the Courant–Friedrichs–Lewy (CFL) and reaction timesteps <span class="math inline">\(\Delta t^n_{\text{CFLR}}\)</span>, <span class="math inline">\(\Delta t^n_R\)</span>. We define such as timestep as</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:Timestep}
+\Delta t^n_{\text{CFLR}} &amp;= \min\{C_{\text{CFL}}\Delta t^n_{\text{CFL}}, C_R\Delta t^n_R\}
+\end{align}\]</span></p>
+<p>where</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:TimestepCFL}
+\Delta t^n_{\text{CFL}} &amp;= \min_{\textbf{x}}\bigg(\frac{\ell(\textbf{x})}{|\textbf{u}^n|}\bigg)  \\
+\label{eq:TimestepR}
+\Delta t^n_R &amp;= \frac{1}{\max_{\textbf{x}}(Da|R^n|)}
+\end{align}\]</span></p>
+<p>where <span class="math inline">\(0&lt;C_{\text{CFL}}, C_R\leq 1\)</span> are safety factors and <span class="math inline">\(\ell(\textbf{x})\)</span> is a local measure of mesh cell size (e.g.&nbsp;diameter, circumradius or minimum edge length). Note that in the case of a uniform mesh we have the simplication <span class="math inline">\(\ell(\textbf{x})=\ell\)</span> and hence</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:TimestepUniformCFL}
+\Delta t^n_{\text{CFL}} = \frac{\ell}{\max_{\textbf{x}}|\textbf{u}^n|}
+\end{align}\]</span></p>
+<p>Finally, for practical purposes we also restrict the timestep to a desired range such that <span class="math inline">\(\Delta t_{\text{min}} \leq \Delta^n \leq \Delta t_{\text{max}}\)</span> by implementing</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:TimestepMinMaxCFLR}
+\Delta t^n=\min\{\Delta t_{\text{max}}, \max\{\Delta t_{\text{min}}, \Delta t^n_{\text{CFLR}}\}\}
+\end{align}\]</span></p>
+<p>Rather than solving the entire system <span class="math inline">\(\eqref{eq:FiniteDifferenceHeatTransport}\)</span>-<span class="math inline">\(\eqref{eq:FiniteDifferenceEvolution}\)</span> at once as a nonlinear, mixed finite element problem for <span class="math inline">\(\theta^{n+1}\)</span>, <span class="math inline">\(c^{n+1}\)</span>, <span class="math inline">\(\textbf{u}^n\)</span>, <span class="math inline">\(p^n\)</span> and <span class="math inline">\(s^{n+1}\)</span>, we solve each subsystem in turn as a linear problem. In particular, we note that <span class="math inline">\(\eqref{eq:FiniteDifferenceContinuity}\)</span> and <span class="math inline">\(\eqref{eq:FiniteDifferenceDarcy}\)</span> are level in time and hence the flow subsystem can be solved independently for <span class="math inline">\((\textbf{u}^n, p^n)\)</span>, given <span class="math inline">\(\mathsf{K}^n\)</span>, <span class="math inline">\(\mu^n\)</span> and <span class="math inline">\(\rho^n\)</span> which are in turn given in terms of <span class="math inline">\(\theta^n\)</span>, <span class="math inline">\(c^n\)</span> and <span class="math inline">\(s^n\)</span>. In the streamfunction formulation, <span class="math inline">\(\eqref{eq:FiniteDifferenceContinuity}\)</span> and <span class="math inline">\(\eqref{eq:FiniteDifferenceDarcy}\)</span> are replaced by</p>
+<p><span class="math display">\[\begin{align}
+\label{eq:FiniteDifferenceStreamfunctionPoisson}
+\nabla\cdot\bigg(\frac{\mu^n\,(\mathsf{K}^n)^{\mathsf{T}}\cdot\nabla\psi^n}{\det(\mathsf{K}^n)}\bigg) &amp;= -\frac{\partial(e_g^y\rho^n)}{\partial x}+\frac{\partial(e_g^x\rho^n)}{\partial y} \\
+\label{eq:FiniteDifferenceStreamfunctionVelocity}
+\textbf{u}^n &amp;=
+\begin{pmatrix}
+\frac{\partial\psi^n}{\partial y} \\
+-\frac{\partial\psi^n}{\partial x}
+\end{pmatrix}
+\end{align}\]</span></p>
+<p>Once <span class="math inline">\(\textbf{u}^n\)</span> is known, the transport equations <span class="math inline">\(\eqref{eq:FiniteDifferenceHeatTransport}\)</span> and <span class="math inline">\(\eqref{eq:FiniteDifferenceSoluteTransport}\)</span> can be solved in turn, provided that their discretizations are explicit with respect to <span class="math inline">\(\textbf{u}\)</span> and <span class="math inline">\(s\)</span>. The final problem to solve is <span class="math inline">\(\eqref{eq:FiniteDifferenceEvolution}\)</span>, and since <span class="math inline">\(\theta^{n+1}\)</span> and <span class="math inline">\(c^{n+1}\)</span> are known from solving <span class="math inline">\(\eqref{eq:FiniteDifferenceHeatTransport}\)</span> and <span class="math inline">\(\eqref{eq:FiniteDifferenceSoluteTransport}\)</span> in advance, its discretization can be explicit with respect to <span class="math inline">\(\theta\)</span> and <span class="math inline">\(c\)</span>. However if <span class="math inline">\(R(s, c, \theta)\)</span> is nonlinear in <span class="math inline">\(s\)</span> then to obtain a linear problem the discretization must be explicit with respect to <span class="math inline">\(s\)</span>. We list the complete numerical integration algorithm in Algorithm <span class="math inline">\(\ref{alg:NumericalIntegration}\)</span>. More complicated numerical integration algorithms, such as predictor-corrector methods, are also possible for this system but for simplicity we do not pursue such approaches.</p>
+</section>
+<section id="discretization-in-space" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="discretization-in-space"><span class="header-section-number">2.4.2</span> Discretization in space</h3>
+<p>Discretization of the domain in the finite element method amounts to partitioning <span class="math inline">\(\Omega\)</span> into a union of cells <span class="math inline">\(\Omega\approx\cup_{\mathcal{K}}\mathcal{K}\)</span>, which can be triangular or quadrilateral in 2D, and tetrahedral or hexahedral in 3D, to form a computational mesh. A mesh is said to be structured if its vertices form a grid, and uniform if the grid spacings are constant. We use the open-source finite element library FEniCS for the creation of a mesh, writing of variational forms, and numerical solution of the resulting linear systems. The open-source meshing library Gmsh [cite], which interfaces with FEniCS, is used for meshing more complicated domains, since FEniCS’s built-in meshing module only implements intervals (1D), rectangles (2D) and boxes (3D).</p>
+<p>Use of the finite element method, rather than alternatices such finite volume, finite difference or spectral methods, is motivated by the abundance of existing general-purpose numerical software for solving PDEs via the finite element method, such as the FEniCS and deal.II libraries. The finite element method has a number of strengths making it a sutable candidate for creating a general-purpose solver to <span class="math inline">\(\eqref{eq:FiniteDifferenceHeatTransport}\)</span>-<span class="math inline">\(\eqref{eq:FiniteDifferenceEvolution}\)</span>. Whereas spectral methods, for example as implemented by the Dedalus library [cite], are less capable of handling non-constant coefficients, such as the porosity, permemability and reaction in our governing equations <span class="math inline">\(\eqref{eq:FiniteDifferenceHeatTransport}\)</span>-<span class="math inline">\(\eqref{eq:FiniteDifferenceEvolution}\)</span>, these do not present a difficluty in the finite element method. To model a domain having some complicated or irregular shape, the finite element method can use unstructured mesh whereas spectral or finite difference methods are typically limited to simpler domains (e.g.&nbsp;Cartesian or curvilinear) discretized as a structured grid. We settled on using the FEniCS library for our numerical solutions owing to its user-friendly Python application-programming interface (API) which would furthermore facilitate postprocessing of numerical results within the well-established ecosystem of scientific Python packages, including Numpy, SciPy and Matplotlib [cite].</p>
+<p>The finite element method requires <span class="math inline">\(\eqref{eq:NonDimensionalHeatTransport}\)</span>-<span class="math inline">\(\eqref{eq:NonDimensionalEvolution}\)</span> to first be written in variational form, which we discuss at length in appendix <span class="math inline">\(\ref{chap:FiniteElementFormulation}\)</span>. Particular attention must be paid to the transport equations <span class="math inline">\(\eqref{eq:FiniteDifferenceHeatTransport}\)</span> and <span class="math inline">\(\eqref{eq:FiniteDifferenceSoluteTransport}\)</span>, because the numerical solution obtained by the finite element method is well-known to suffer spurious oscillations in the advection-dominated (i.e.&nbsp;<span class="math inline">\(Rb, Ra \to\infty\)</span>) limit or in the vicinity of sharp gradients, say due to a prescribed initial condition or boundary condition. A finer mesh can improve this, but it is not computationally pheasible to use an ever-increasing mesh resolution. Stabilized finite element formulations for the advection-dominated case are included in appendix <span class="math inline">\(\ref{chap:FiniteElementFormulation}\)</span>. In the case of <span class="math inline">\(\eqref{eq:FiniteDifferenceSoluteTransport}\)</span>, another cause of spurious oscillations in the numerical solution can be due to the reaction term dominating <span class="math inline">\(\eqref{eq:FiniteDifferenceSoluteTransport}\)</span> (i.e.&nbsp;<span class="math inline">\(Da\to\infty\)</span> provided that <span class="math inline">\(R\neq 0\)</span>), which in effect makes the differential equation `stiff’ and require impractically-small timesteps to avoid numerical instability. As a somewhat blunt but nonetheless effective defence against spurious oscillations, we follow [cite] and also include in our numerical simulation program the option to correct at each step in the numerical integration any values of the temperature and concentration that fall outside the physically-permitted ranges. In the simple case of the finite element approximation <span class="math inline">\(\theta^{n}(\textbf{x})=\sum_j\theta^{n}_j\xi_j(\textbf{x})\)</span> having for its degrees-of-freedom <span class="math inline">\(\{\theta^n_j\}_j\)</span> pointwise evaluations (as opposed to more exotic evaluations such as integral moments or derivatives), then a simple correction algorithm restricting <span class="math inline">\(\theta^n\in[\theta_{\text{min}},\theta_{\text{max}}]\)</span> can be implemented by <span class="math inline">\(\theta_j^n\gets\theta_{\text{max}}\)</span> if <span class="math inline">\(\theta_j^n&gt;1\)</span> and <span class="math inline">\(\theta_j^n\gets\theta_{\text{min}}\)</span> if <span class="math inline">\(\theta_j^n&lt;\theta_{\text{min}}\)</span>.</p>
+<p>We use continuous linear Lagrange elements <span class="math inline">\(\text{P}_1\)</span> for the temperature <span class="math inline">\(\theta\)</span> and concentration <span class="math inline">\(c\)</span>, unless the variational formulation chosen is discontinuous Galerkin (DG) in which case discontinuous linear Lagrange elements <span class="math inline">\(\text{DP}_1\)</span> are instead used. <span class="math inline">\(\text{P}_1\)</span> elements are also used for the saturation <span class="math inline">\(s\)</span>. Solving <span class="math inline">\(\eqref{eq:FiniteDifferenceContinuity}\)</span> and <span class="math inline">\(\eqref{eq:FiniteDifferenceDarcy}\)</span> requires a mixed finite element method solving for <span class="math inline">\((\textbf{u}, p)\)</span> together. The choice of finite elements in mixed problems must satisfy the inf-sup condition [cite], and we use <span class="math inline">\(\text{BDM}_1\)</span>-<span class="math inline">\(\text{DP}_0\)</span> pair which is well-known to be stable for solving the Darcy flow equations [cite]. In the streamfunction formulation, we use continuous quadratic Lagrange elements <span class="math inline">\(\text{P}_2\)</span> for the streamfunction <span class="math inline">\(\psi\)</span> which is then differentiated to obtain the velocity components <span class="math inline">\(\eqref{eq:FiniteDifferenceStreamfunctionVelocity}\)</span>, for which we use <span class="math inline">\(\text{DP}_1\)</span> elements.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./chapter1.html" class="pagination-link" aria-label="Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./chapter3.html" class="pagination-link" aria-label="Numerical software">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Numerical software</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
